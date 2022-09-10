@@ -1,0 +1,16 @@
+version: '3'
+services:
+  openvpn:
+    build: .
+    image: openvpn
+    container_name: openvpn
+    cap_add:
+        - NET_ADMIN
+    ports:
+        - 1194:1194/udp
+    environment:
+        HOST_ADDR: ${HOST_ADDR} 
+    volumes:
+        - ./ovpnfiles:/openvpn/data
+    restart: always
+    
